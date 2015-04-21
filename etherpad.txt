@@ -1,0 +1,80 @@
+=====================================================================
+
+Useful links:
+
+Workshop website: http://hpcarcher.github.io/2015-04-16-imperial/
+Student Github repository: https://github.com/hpcarcher/2015-04-16-imperial-students
+
+www.github.com
+www.bitbucket.org
+
+
+================== DAY 1 =======================
+
+GOOD MORNING! :) 
+
+
+For user.name I would put your full name. In a collaborative framework this will allow other people to identify you. In git there is a blame command `git blame` which will tell you who has modified each line in the code. If you have a cryptic username I will not know who to blame/credit with changes (though it has your email too)
+
+
+Github repository for next modules:
+https://github.com/hpcarcher/2015-04-16-imperial-students
+
+
+
+================== DAY 2 =======================
+
+Hello everyone and welcome back!
+
+Please start your day by doing a "git pull" on the 2015-04-16-Imperial-Students" repository.
+
+Since you cloned the repository we have added material for todays modules as well as the slides used during the workshop. YOU WILL NEED THESE CHANGES FOR TODAY'S LESSONS!!
+
+Also, bookmark the following page if you would like to refresh your memory or learn more about git:
+http://hpcarcher.github.io/git-novice/
+
+Cheers! 
+
+===============================================
+
+
+TESTING module:
+
+Come on people! (:)
+
+
+
+Does it return sensible output for simple problems (e.g. cities on a line)?
+Permutating distance matrix should give same result - does it?
+So should we make up some data for which we know the answer and then try to see if it gives that answer?
+check it exits sensibly(/quickly) on an empty problem (ie i accidentally give it a non existent file/list of citys/costs etc)
+Check whether etha function returns correct values (test needs to return correct value on set of values for which answer is known)
+Test that there are cities in the first place. (could store city names as list and check list length?)
+Add some form of visual representation of the results so that human eye can spot patterns, errors, etc..
+
+The output could be commented. E.g. I have no idea what "p" is. 
+
+Add some kind of confidence limit as random number generation is giving different answers
+
+Does the code work at extremes
+
+
+Test that if the input data is really non-negative integer ad =< the number of cities.
+
+If you do a git pull you will find make/MakeNotes.pdf which were the notes used for the lecture on make.
+
+unit test ideas:
+'average'
+    - a know graph is initialized with a distance matrix
+    - check that the average values are equal to a pre-calculated value
+    - check what happens is a graph created with a mix of integer and float
+'init'
+    - check that a graph is created correctly for a given input
+
+
+
+================  FEEDBACK  =====================
+
+PLEASE go to: 
+http://www.archer.a  nc.uk/training/feedback/
+and tell us what you thought of the workshop (after the workshop is over... :) ).

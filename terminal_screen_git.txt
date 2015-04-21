@@ -1,0 +1,750 @@
+Script started on Thu Apr 16 08:58:08 2015
+bash-3.2$ testing
+bash: testing: command not found
+bash-3.2$ git --version
+git version 2.3.2 (Apple Git-55)
+bash-3.2$ cd
+bash-3.2$ pwd
+/Users/efarsara
+bash-3.2$ git help
+usage: git [--version] [--help] [-C <path>] [-c name=value]
+	   [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+	   [-p|--paginate|--no-pager] [--no-replace-objects] [--bare]
+	   [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+	   <command> [<args>]
+
+The most commonly used git commands are:
+   add	      Add file contents to the index
+   bisect     Find by binary search the change that introduced a bug
+   branch     List, create, or delete branches
+   checkout   Checkout a branch or paths to the working tree
+   clone      Clone a repository into a new directory
+   commit     Record changes to the repository
+   diff       Show changes between commits, commit and working tree, etc
+   fetch      Download objects and refs from another repository
+   grep       Print lines matching a pattern
+   init       Create an empty Git repository or reinitialize an existing one
+   log	      Show commit logs
+   merge      Join two or more development histories together
+   mv	      Move or rename a file, a directory, or a symlink
+   pull       Fetch from and integrate with another repository or a local branch
+   push       Update remote refs along with associated objects
+   rebase     Forward-port local commits to the updated upstream head
+   reset      Reset current HEAD to the specified state
+   rm	      Remove files from the working tree and from the index
+   show       Show various types of objects
+   status     Show the working tree status
+   tag	      Create, list, delete or verify a tag object signed with GPG
+
+'git help -a' and 'git help -g' list available subcommands and some
+concept guides. See 'git help <command>' or 'git help <concept>'
+to read about a specific subcommand or concept.
+bash-3.2$ git help add
+GIT-ADD(1)			  Git Manual			    GIT-ADD(1)
+
+NAME
+       git-add - Add file contents to the index
+
+SYNOPSIS
+       git add [--verbose | -v] [--dry-run | -n] [--force | -f] [--interactive | -i] [--patch | -p]
+		 [--edit | -e] [--[no-]all | --[no-]ignore-removal | [--update | -u]]
+		 [--intent-to-add | -N] [--refresh] [--ignore-errors] [--ignore-missing]
+		 [--] [<pathspec>...]
+
+DESCRIPTION
+       This command updates the index using the current content found in the
+       working tree, to prepare the content staged for the next commit. It
+       typically adds the current content of existing paths as a whole, but
+       with some options it can also be used to add content with only part of
+       the changes made to the working tree files applied, or remove paths
+       that do not exist in the working tree anymore.
+
+       The "index" holds a snapshot of the content of the working tree, and it
+:      is this snapshot that is taken as the contents of the next commit. Thus
+       after making any changes to the working directory, and before running
+       the commit command, you must use the add command to add any new or
+       modified files to the index.
+
+       This command can be performed multiple times before a commit. It only
+       adds the content of the specified file(s) at the time the add command
+       is run; if you want subsequent changes included in the next commit,
+       then you must run git add again to add the new content to the index.
+
+       The git status command can be used to obtain a summary of which files
+       have changes that are staged for the next commit.
+
+       The git add command will not add ignored files by default. If any
+       ignored files were explicitly specified on the command line, git add
+       will fail with a list of ignored files. Ignored files reached by
+       directory recursion or filename globbing performed by Git (quote your
+       globs before the shell) will be silently ignored. The git add command
+       can be used to add ignored files with the -f (force) option.
+
+       Please see git-commit(1) for alternative ways to add content to a
+       commit.
+
+OPTIONS
+       <pathspec>...
+	   Files to add content from. Fileglobs (e.g.  *.c) can be given to
+	   add all matching files. Also a leading directory name (e.g.	dir to
+	   add dir/file1 and dir/file2) can be given to update the index to
+	   match the current state of the directory as a whole (e.g.
+	   specifying dir will record not just a file dir/file1 modified in
+	   the working tree, a file dir/file2 added to the working tree, but
+	   also a file dir/file3 removed from the working tree. Note that
+	   older versions of Git used to ignore removed files; use --no-all
+	   option if you want to add modified or new files but ignore removed
+	   ones.
+
+       -n, --dry-run
+	   Don't actually add the file(s), just show if they exist and/or will
+	   be ignored.
+
+       -v, --verbose
+	   Be verbose.
+
+       -f, --force
+	   Allow adding otherwise ignored files.
+
+bash-3.2$ git config --global user.name "Manos"""""""
+bash-3.2$ git config --global user.email "farsarakis@epcc.ed.ac.uk"
+bash-3.2$ git config -lglobal core.editor "nano"
+user.name=Manos
+user.email=farsarakis@epcc.ed.ac.uk
+filter.media.required=true
+filter.media.clean=git media clean %f
+filter.media.smudge=git media smudge %f
+push.default=simple
+filter.hawser.clean=git hawser clean %f
+filter.hawser.smudge=git hawser smudge %f
+filter.hawser.required=true
+filter.lfs.clean=git lfs clean %f
+filter.lfs.smudge=git lfs smudge %f
+filter.lfs.required=true
+bash-3.2$ cate~/.gitconfig
+[user]
+	name = Manos
+	email = farsarakis@epcc.ed.ac.uk
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+[push]
+	default = simple
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
+bash-3.2$ cd
+bash-3.2$ mkdir planets
+mkdir: planets: File exists
+bash-3.2$ rm -rf
+bash-3.2$ mkdirfplanets
+mkdir: planets: File exists
+rms-rf.planetsr planets
+mkdir3.2$ rm -rf planets
+bash-3.2$ cd planets/
+bash-3.2$ ls
+bash-3.2$ ls -A
+bash-3.2$ git init
+Initialized empty Git repository in /Users/efarsara/planets/.git/
+bash-3.2$ lst-Anit
+.git
+bash-3.2$ git status
+On branch master
+
+Initial commit
+
+nothing to commit (create/copy files and use "git add" to track)
+bash-3.2$ git status
+On branch master
+
+Initial commit
+
+nothing to commit (create/copy files and use "git add" to track)
+bash-3.2$ vim mars.txt
+"mars.txt" [New]F1L,]54C written								     ~										     ~										     ~										     ~										     ~										     ~										     ~										     ~										     ~										     ~										     ~										     ~										     ~										     ~										     ~										     ~										     ~										     ~										     ~										     ~										     ~										     -- INSERT --Cold and dry, but everything is my favourite colour. :wq
+bash-3.2$ cat mars.txt
+Cold and dry, but everything is my favourite colour.
+bash-3.2$ git status
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	mars.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+bash-3.2$ git add mars.txt
+bash-3.2$ git status
+On branch master
+
+Initial commit
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	new file:   mars.txt
+
+bash-3.2$ git rmm--cached mars.txt
+rm 'mars.txt'
+bash-3.2$ git status
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	mars.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+addtmars.txtt rma--cached mars.txt
+bash-3.2$ git statusrs.txt
+On branch master
+
+Initial commit
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	new file:   mars.txt
+
+bash-3.2$ git commit -m "First thoughts about mars."
+[master (root-commit) ed9f82e] First thoughts about mars.
+ 1 file changed, 1 insertion(+)
+ create mode 100644 mars.txt
+bash-3.2$ git status
+On branch master
+nothing to commit, working directory clean
+bash-3.2$ vim mars.txt
+"mars.txt" 1L, 54CCold and dry, but everything is my favourite colour.
+bash-3.2$ ls									~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										:q!
+mars.txt
+bash-3.2$ cat mars.txt
+Cold and dry, but everything is my favourite colour.
+bash-3.2$ vim mars.txt
+"mars.txt" 1L, 54CCold and dry, but everything is my favourite colour.
+"mars.txt" 2L, 96C written							~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										-- INSERT --Cold and dry, but everything is my favourite colour. The two moons may hbbe a problem for Wolfam:wq
+bash-3.2$ cat mars.txt
+Cold and dry, but everything is my favourite colour.
+The two moons may be a problem for Wolfam
+bash-3.2$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   mars.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+bash-3.2$ git add mars.txt
+bash-3.2$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   mars.txt
+
+bash-3.2$ git commit -m "
+"~/planets/.git/COMMIT_EDITMSG" 7L, 207C# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Changes to be committed:
+#	modified:   mars.txt
+#
+~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										-- INSERT --Consi#eChangesctombetcommi^Ltted:
+#modified:   mars.txt
+".git/COMMIT_EDITMSG"n10L,,300C writteny message aborts the commit.iAdded a second line. This commit was when I had trouble with vim. :wq
+[master 7ad3caa] Considering problems...
+ 1 file changed, 1 insertion(+)
+bash-3.2$ git log
+commit 7ad3caa403f6d9afa7250bdec8f35dbfe3c41fc0
+Author: Manos <farsarakis@epcc.ed.ac.uk>
+Date:	Thu Apr 16 10:46:55 2015 +0100
+
+    Considering problems...
+
+    Added a second line. This commit was when I had trouble with vim.
+
+commit ed9f82e943b158dc1c839766711fc77db867de93
+Author: Manos <farsarakis@epcc.ed.ac.uk>
+Date:	Thu Apr 16 10:44:18 2015 +0100
+
+    First thoughts about mars.
+bash-3.2$ git log --oneline
+7ad3caa Considering problems...
+ed9f82e First thoughts about mars.
+bash-3.2$ git diff mars.txt
+bash-3.2$ vim mars.txt
+"mars.txt" 2L, 96CCold and dry, but everything is my favourite colour.
+The two moons may be a problem for Wolfam
+~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										Thedtwodmoons may be a problem for Wolfa-- INSERT --mam
+"mars.txt" 3L, 147C written							mBut the Mummy will appreciate the lack of humidity:wq
+bash-3.2$ cat mars.txt
+Cold and dry, but everything is my favourite colour.
+The two moons may be a problem for Wolfam
+But the Mummy will appreciate the lack of humidity
+itmdiff2$ cat mars.txt
+diff --git a/mars.txt b/mars.txt
+index 6752d59..9394a81 100644
+--- a/mars.txt
++++ b/mars.txt
+@@ -1,2 +1,3 @@
+ Cold and dry, but everything is my favourite colour.
+ The two moons may be a problem for Wolfam
++But the Mummy will appreciate the lack of humidity
+bash-3.2$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   mars.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+bash-3.2$ git add mars.txt
+bash-3.2$ git commit -m "Mummys are happy..."
+[master 33c90cb] Mummys are happy...
+ 1 file changed, 1 insertion(+)
+bash-3.2$ git log --oneline
+33c90cb Mummys are happy...
+7ad3caa Considering problems...
+ed9f82e First thoughts about mars.
+bash-3.2$ git diff
+bash-3.2$ git diff 7ad3caa mars.txt
+diff --git a/mars.txt b/mars.txt
+index 6752d59..9394a81 100644
+--- a/mars.txt
++++ b/mars.txt
+@@ -1,2 +1,3 @@
+ Cold and dry, but everything is my favourite colour.
+ The two moons may be a problem for Wolfam
++But the Mummy will appreciate the lack of humidity
+bash-3.2$ git diff HEADcmars.txttxt
+bash-3.2$ git diff HEAD~1 mars.txt
+diff --git a/mars.txt b/mars.txt
+index 6752d59..9394a81 100644
+--- a/mars.txt
++++ b/mars.txt
+@@ -1,2 +1,3 @@
+ Cold and dry, but everything is my favourite colour.
+ The two moons may be a problem for Wolfam
++But the Mummy will appreciate the lack of humidity
+bash-3.2$ git diff HEAD1@2mars.txt
+diff --git a/mars.txt b/mars.txt
+index a46d06b..9394a81 100644
+--- a/mars.txt
++++ b/mars.txt
+@@ -1 +1,3 @@
+ Cold and dry, but everything is my favourite colour.
++The two moons may be a problem for Wolfam
++But the Mummy will appreciate the lack of humidity
+bash-3.2$ git log --oneline
+33c90cb Mummys are happy...
+7ad3caa Considering problems...
+ed9f82e First thoughts about mars.
+bash-3.2$ cat mars.txt
+Cold and dry, but everything is my favourite colour.
+The two moons may be a problem for Wolfam
+But the Mummy will appreciate the lack of humidity
+githlog2--onelines.txt
+33c90cb Mummys are happy...
+7ad3caa Considering problems...
+ed9f82e First thoughts about mars.
+bash-3.2$ git commit --amend
+"~/planets/.git/COMMIT_EDITMSG" 11L, 275CMummys are happy...
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Date:      Thu Apr 16 10:52:00 2015 +0100
+#
+# On branch master
+# Changes to be committed:
+#	modified:   mars.txt
+#
+~										~										~										~										~										~										~										~										~										~										~										~										Mummys are happy..
+".git/COMMIT_EDITMSG"y11L,y273Cywrittenppy...happy.:wqhappy...
+[master 47bb620] Mummy is happy...
+ Date: Thu Apr 16 10:52:00 2015 +0100
+ 1 file changed, 1 insertion(+)
+bash-3.2$ git log --oneline
+47bb620 Mummy is happy...
+7ad3caa Considering problems...
+ed9f82e First thoughts about mars.
+bash-3.2$ lst
+mars.txt
+bash-3.2$ vim mars.txt
+"mars.txt" 3L, 147CCold and dry, but everything is my favourite colour.
+The two moons may be a problem for Wolfam
+But the Mummy will appreciate the lack of humidity
+But the Mummy wil-- INSERT --yty						~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										Cold and dry, but everything is my favourite colour.
+~										ysakdjfaslkdjasdfasdfasasdfasdfasdfasdfasdfasdfasdfasd
+"mars.txt"m18L,s238CbwrittenoblemfforWWolfaad two moons may be a problem for Wolfadf two moons may be a problem for Wolfafa two moons may be a problem for Wolfaas two moons may be a problem for Wolfaudmmy will appreciate the lack of humiditd mmy will appreciate the lack of humiditysmmy will appreciate the lack of humidits mmy will appreciate the lack of humidityammy will appreciate the lack of humiditadmmy will appreciate the lack of humiditdfmmy will appreciate the lack of humiditf mmy will appreciate the lack of humidityammy will appreciate the lack of humiditasmmy will appreciate the lack of humiditsdmmy will appreciate the lack of humiditdfmmy will appreciate the lack of humiditfammy will appreciate the lack of humidita mmy will appreciate the lack of humiditysmmy will appreciate the lack of humiditsdmmy will appreciate the lack of humidity:wq
+bash-3.2$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   mars.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+bash-3.2$ cat mars.txt
+Cold and dry, but everything is my favourite colour.
+Thesfadfas two moons may be a problem for Wolfam
+But the Mud s adf asdfa sdmmy will appreciate the lack of humidity
+sakdjfaslkdj
+
+
+asdfas
+dfas
+
+asdf
+asd
+fas
+df
+asd
+fasdfas
+df
+asdf
+asd
+bash-3.2$ git log --oneline
+47bb620 Mummy is happy...
+7ad3caa Considering problems...
+ed9f82e First thoughts about mars.
+bash-3.2$ git diff
+diff --git a/mars.txt b/mars.txt
+index 9394a81..2fb9e38 100644
+--- a/mars.txt
++++ b/mars.txt
+@@ -1,3 +1,18 @@
+ Cold and dry, but everything is my favourite colour.
+-The two moons may be a problem for Wolfam
+-But the Mummy will appreciate the lack of humidity
++Thesfadfas two moons may be a problem for Wolfam
++But the Mud s adf asdfa sdmmy will appreciate the lack of humidity
++sakdjfaslkdj
++
++
++asdfas
++dfas
++
++asdf
++asd
++fas
++df
++asd
++fasdfas
++df
++asdf
++asd
+bash-3.2$ git checkout -- mars.txt
+bash-3.2$ cat mars.txt
+Cold and dry, but everything is my favourite colour.
+The two moons may be a problem for Wolfam
+But the Mummy will appreciate the lack of humidity
+bash-3.2$ git diff
+bash-3.2$ git diff HEAD~3 mars.txt
+fatal: ambiguous argument 'HEAD~3': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+bash-3.2$ git diff HEA1@21@ars.txt
+diff --git a/mars.txt b/mars.txt
+index a46d06b..9394a81 100644
+--- a/mars.txt
++++ b/mars.txt
+@@ -1 +1,3 @@
+ Cold and dry, but everything is my favourite colour.
++The two moons may be a problem for Wolfam
++But the Mummy will appreciate the lack of humidity
+bash-3.2$ git checkout HEAD~11-- mars.txt
+bash-3.2$ git log --oneline
+47bb620 Mummy is happy...
+7ad3caa Considering problems...
+ed9f82e First thoughts about mars.
+bash-3.2$ cat mars.txt
+Cold and dry, but everything is my favourite colour.
+The two moons may be a problem for Wolfam
+bash-3.2$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   mars.txt
+
+bash-3.2$ git checkout -- mars.txt
+bash-3.2$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   mars.txt
+
+bash-3.2$ cat mars.txt
+Cold and dry, but everything is my favourite colour.
+The two moons may be a problem for Wolfam
+bash-3.2$ git checkout HEAD -- mars.txt
+bash-3.2$ cat mars.txt
+Cold and dry, but everything is my favourite colour.
+The two moons may be a problem for Wolfam
+But the Mummy will appreciate the lack of humidity
+bash-3.2$ vim annoyingFile.object
+"annoyingFile.object" [New]F3L,]49C written									~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										-- INSERT --asjdflsakdja;lskdasdfkasj;dlfkjasdflkasjdfl;kj:wq
+bash-3.2$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	annoyingFile.object
+
+nothing added to commit but untracked files present (use "git add" to track)
+bash-3.2$ vim .gitignore
+".gitignore" [New]F2L,]5C written								       ~									       ~									       ~									       ~									       ~									       ~									       ~									       ~									       ~									       ~									       ~									       ~									       ~									       ~									       ~									       ~									       ~									       ~									       ~									       ~									       ~									       -- INSERT --i*.o:wq
+bash-3.2$ vim .gitignore
+".gitignore" 2L, 5C*.o
+
+".gitignore" 3L, 14C written							~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										*.-- INSERT --o*..object:wq
+bash-3.2$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	.gitignore
+
+nothing added to commit but untracked files present (use "git add" to track)
+bash-3.2$ git add .gitignore
+bash-3.2$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	new file:   .gitignore
+
+bash-3.2$ git commit -m "Added gitignore file to repo!"
+bash: !": event not found
+bash-3.2$ git commit -m "Added gitignore file to repo"
+[master 60cf08f] Added gitignore file to repo
+ 1 file changed, 3 insertions(+)
+ create mode 100644 .gitignore
+bash-3.2$ git log --oneline
+60cf08f Added gitignore file to repo
+47bb620 Mummy is happy...
+7ad3caa Considering problems...
+ed9f82e First thoughts about mars.
+bash-3.2$ git remote add origin git@bitbucket.org:efarsarakis/planets.git
+ststime2$ git push -u origin --all # pushes up the repo and its refs for the fir
+The authenticity of host 'bitbucket.org (131.103.20.168)' can't be established.
+RSA key fingerprint is 97:8c:1b:f2:6f:14:6b:5c:3b:ec:aa:46:46:74:7c:40.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'bitbucket.org,131.103.20.168' (RSA) to the list of known hosts.
+Counting objects: 12, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (8/8), done.
+Writing objects: 100% (12/12), 1.08 KiB | 0 bytes/s, done.
+Total 12 (delta 2), reused 0 (delta 0)
+To git@bitbucket.org:efarsarakis/planets.git
+ * [new branch]      master -> master
+Branch master set up to track remote branch master from origin.
+bash-3.2$ git push -u origin --tags # pushes up any tags
+Warning: Permanently added the RSA host key for IP address '131.103.20.167' to the list of known hosts.
+Everything up-to-date
+bash-3.2$ ls
+annoyingFile.object	mars.txt
+bash-3.2$ pwd
+/Users/efarsara/planets
+bash-3.2$ cd ..
+bash-3.2$ ls planets/
+annoyingFile.object	mars.txt
+bash-3.2$ rm -rf planets/
+bash-3.2$ git clone git@bitbucket.org:efarsarakis/planets.git
+Cloning into 'planets'...
+remote: Counting objects: 12, done.
+remote: Compressing objects: 100% (8/8), done.
+remote: Total 12 (delta 2), reused 0 (delta 0)
+Receiving objects: 100% (12/12), done.
+Resolving deltas: 100% (2/2), done.
+Checking connectivity... done.
+bash-3.2$ cd planets/
+bash-3.2$ ls
+mars.txt
+bash-3.2$ ls--A
+.git		.gitignore	mars.txt
+bash-3.2$ git log --oneline
+60cf08f Added gitignore file to repo
+47bb620 Mummy is happy...
+7ad3caa Considering problems...
+ed9f82e First thoughts about mars.
+bash-3.2$ vim mars.txt
+"mars.txt" 3L, 147CCold and dry, but everything is my favourite colour.
+The two moons may be a problem for Wolfam
+But the Mummy will appreciate the lack of humidity
+~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~
+
+"mars.txt"-4L,d174Cowritten at the end.:wq
+bash-3.2$ cat mars.txt
+Cold and dry, but everything is my favourite colour.
+The two moons may be a problem for Wolfam
+But the Mummy will appreciate the lack of humidity
+Added one line at the end.
+bash-3.2$ git add mars.txt
+bash-3.2$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   mars.txt
+
+bash-3.2$ git commit -m "My fist commit after adding remote origin."
+[master aad177a] My fist commit after adding remote origin.
+ 1 file changed, 1 insertion(+)
+bash-3.2$ git log --oneline
+aad177a My fist commit after adding remote origin.
+60cf08f Added gitignore file to repo
+47bb620 Mummy is happy...
+7ad3caa Considering problems...
+ed9f82e First thoughts about mars.
+gitmpusheline fisticommitMaftertaddingtremote origin."emote origin."
+bash-3.2$
+bash-3.2$
+bash-3.2$ git push
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 350 bytes | 0 bytes/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+To git@bitbucket.org:efarsarakis/planets.git
+   60cf08f..aad177a  master -> master
+bash-3.2$ cd ..
+bash-3.2$ cd planets/
+bash-3.2$ git branch
+* master
+bash-3.2$ git branch dev
+bash-3.2$ git branch dev
+  dev
+* master
+bash-3.2$ git checkout dev
+Switched to branch 'dev'
+bash-3.2$ git branch
+* dev
+  master
+bash-3.2$ ls
+mars.txt		orangeStickerFile.txt
+bash-3.2$ touch earth.txt
+bash-3.2$ ls
+earth.txt		mars.txt		orangeStickerFile.txt
+bash-3.2$ git branch master
+fatal: A branch named 'master' already exists.
+bash-3.2$ git checkout master
+Switched to branch 'master'
+Your branch is up-to-date with 'origin/master'.
+bash-3.2$ ls
+earth.txt		mars.txt		orangeStickerFile.txt
+bash-3.2$ git branch
+  dev
+* master
+bash-3.2$ lst pu
+earth.txt		mars.txt		orangeStickerFile.txt
+bash-3.2$ more earth.txt
+bash-3.2$ git checkout dev
+Switched to branch 'dev'
+bash-3.2$ git checkout master
+Switched to branch 'master'
+Your branch is up-to-date with 'origin/master'.
+bash-3.2$ git checkout dev
+Switched to branch 'dev'
+bash-3.2$ git checkout master
+Switched to branch 'master'
+Your branch is up-to-date with 'origin/master'.
+bash-3.2$ ls
+earth.txt		mars.txt		orangeStickerFile.txt
+bash-3.2$ git branch
+  dev
+* master
+bash-3.2$ git checkout dev
+Switched to branch 'dev'
+bash-3.2$ git branch
+* dev
+  master
+bash-3.2$ ls
+earth.txt		mars.txt		orangeStickerFile.txt
+bash-3.2$ git status
+On branch dev
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	earth.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+bash-3.2$ git branch
+* dev
+  master
+bash-3.2$ git add earth.txt
+bash-3.2$ git commit -m "Addedathe earth.txt file"
+[dev a156660] Added the earth.txt file
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 earth.txt
+bash-3.2$ git status
+On branch dev
+nothing to commit, working directory clean
+bash-3.2$ git checkout master
+Switched to branch 'master'
+Your branch is up-to-date with 'origin/master'.
+bash-3.2$ ls
+mars.txt		orangeStickerFile.txt
+bash-3.2$ vim mars.txt
+"mars.txt" 5L, 219CCold and dry, but everything is my favourite colour.
+The two moons may be a problem for Wolfam
+But the Mummy will appreciate the lack of humidity
+Added one line at the end.
+I'm orange sticker, and I'm making a change.
+~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~										~
+
+
+
+"mars.txt"-6L,e239Cnwrittenster.:wq
+bash-3.2$ cat mars.txt
+Cold and dry, but everything is my favourite colour.
+The two moons may be a problem for Wolfam
+But the Mummy will appreciate the lack of humidity
+Added one line at the end.
+I'm orange sticker, and I'm making a change.
+New line as master.
+bash-3.2$ gittstatus
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   mars.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+bash-3.2$ git add mars.txt
+bash-3.2$ git commit -m "new line as master"
+[master 0b86362] new line as master
+ 1 file changed, 1 insertion(+)
+bash-3.2$ cat mars.txt
+Cold and dry, but everything is my favourite colour.
+The two moons may be a problem for Wolfam
+But the Mummy will appreciate the lack of humidity
+Added one line at the end.
+I'm orange sticker, and I'm making a change.
+New line as master.
+bash-3.2$ git checkout dev
+Switched to branch 'dev'
+cathmars.txtt checkout dev
+Cold and dry, but everything is my favourite colour.
+The two moons may be a problem for Wolfam
+But the Mummy will appreciate the lack of humidity
+Added one line at the end.
+I'm orange sticker, and I'm making a change.
+bash-3.2$
